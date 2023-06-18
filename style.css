@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url("timeline.png");
+}
+
+.header{
+    height: 100px;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+#nav1{
+    height: 100px;
+    width: 300px;
+    font-size: 300%;
+    text-align: center;
+    padding-top: 30px;
+    font-weight: bold;
+    font-family: 'Happy Monkey', cursive;
+    color: black;
+}
+
+#nav2{
+    height: 100px;
+    width: 200px;
+    font-size: 180%;
+    text-align: center;
+    padding-top: 30px;
+    color: black;
+    font-family: 'Happy Monkey', cursive;
+    cursor: pointer;
+    background-image: url("timeline.png");
+    border: none;
+    font-weight: 600;
+
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 220px;
+    width: 400px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    font-family: 'Happy Monkey', cursive;
+}
+  
+  /* Styles for the overlay */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#addinput{
+    width: 350px;
+    height: 30px;
+    border-radius: 5px;
+    border-color: antiquewhite;
+    margin: 20px;
+    cursor: pointer;
+    font-family: 'Happy Monkey', cursive;
+    font-weight: bold;
+}
+
+
+.popupbuttons{
+    height: 30px;
+    width: 80px;
+    margin-left: 80px;
+    font-size: medium;
+    border-radius: 12px;
+    border-color: antiquewhite;
+    box-shadow: 1px 2px 3px black;
+    cursor: pointer;
+    font-family: 'Happy Monkey', cursive;
+    font-weight: bold;
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+
+.card {
+    width: 250px;
+    height: 300px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    font-family: 'Happy Monkey', cursive;
+    background-color: rgb(189, 131, 189);
+  }
+
+
+
+  /* Styles for the form */
+  .card form {
+    margin-top: 5px;
+  }
+
+
+  .card button {
+    margin-left: 40px;
+    margin-top: 150px;
+    font-family: 'Happy Monkey', cursive;
+    font-weight: bold;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 1px 2px 3px black;
+    cursor: pointer;
+
+  }
+
+
+
+
