@@ -1,135 +1,279 @@
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap');
-
-*{
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Yatra+One&display=swap');
 
 body{
-    background-image: url("timeline.png");
+    background-color: rgb(250, 88, 129);
+    color: white;
+}
+#header-part1{
+    font-size: 8vh;
+    font-family: 'Yatra One', cursive;
+    font-weight: bold;
 }
 
-.header{
-    height: 100px;
-    width: auto;
+#header{
     display: flex;
-    justify-content: space-between;
+    font-size: 50px;
 }
-
-#nav1{
-    height: 100px;
-    width: 300px;
-    font-size: 300%;
-    text-align: center;
-    padding-top: 30px;
-    font-weight: bold;
-    font-family: 'Happy Monkey', cursive;
-    color: black;
-}
-
-#nav2{
-    height: 100px;
-    width: 200px;
-    font-size: 180%;
-    text-align: center;
-    padding-top: 30px;
-    color: black;
-    font-family: 'Happy Monkey', cursive;
+#header-part2{
+    z-index: 1;
+    position: absolute;
+    left: 82%;
     cursor: pointer;
-    background-image: url("timeline.png");
-    border: none;
-    font-weight: 600;
-
+    top: 5px;
+    color: rgb(78 160 231);
 }
-
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 220px;
-    width: 400px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    border-radius: 20px;
-    font-family: 'Happy Monkey', cursive;
-}
-  
-  /* Styles for the overlay */
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-#addinput{
-    width: 350px;
-    height: 30px;
-    border-radius: 5px;
-    border-color: antiquewhite;
-    margin: 20px;
-    cursor: pointer;
-    font-family: 'Happy Monkey', cursive;
-    font-weight: bold;
-}
-
-
-.popupbuttons{
-    height: 30px;
-    width: 80px;
-    margin-left: 80px;
-    font-size: medium;
-    border-radius: 12px;
-    border-color: antiquewhite;
-    box-shadow: 1px 2px 3px black;
-    cursor: pointer;
-    font-family: 'Happy Monkey', cursive;
-    font-weight: bold;
-}
-
-.container{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-top: 30px;
-}
-
-
-.card {
-    width: 250px;
-    height: 300px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 30px;
-    font-family: 'Happy Monkey', cursive;
-    background-color: rgb(189, 131, 189);
-  }
-
-
-
-  /* Styles for the form */
-  .card form {
+.header-part3{
+    z-index: 1;
+    position: absolute;
+    left: 87%;
     margin-top: 5px;
-  }
-
-
-  .card button {
-    margin-left: 40px;
-    margin-top: 150px;
-    font-family: 'Happy Monkey', cursive;
-    font-weight: bold;
-    height: 30px;
-    border-radius: 20px;
-    border: none;
-    box-shadow: 1px 2px 3px black;
     cursor: pointer;
+    font-size: 6vh;
+    font-family: 'Yatra One', cursive;
+}
+.color-red{
+    color: red;
+}
+#popup-to-add-card{
+    display: none;
+    position: fixed;
+    padding: 20% 0 0 35%;
+    top: -10%;
+    left: -1%;
+    z-index: 1;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Yatra One', cursive;
+}
+#popup-to-add-card-box{
+    border-radius: 7px;
+    width: 30vw;
+    height: 30vh;
+    padding: 30px 0 0px 0px;
+    text-align: center;
+    color: black;
+    background-color: #fff;
+    font-family: 'Yatra One', cursive;
+    
+}
+.big-blue-text{
+    color: rgb(181, 54, 54);
+    font-size: 25px;
+}
+.blue-button{
+    border-radius: 250px;
+    margin-top: 5%;
+    color: white;
+    background-color: rgb(243, 56, 56);
+    font-size: 30px;
+    width: 25%;
+    height: 20%;
+    cursor: pointer;
+    
+}
+button{
+    border: none;
+}
+#modal-close-button{
+    margin-left: 10px;
+    font-family: 'Yatra One', cursive;
+    font-size: 20px;
+    margin-top: 20px;
 
-  }
+}
+#modal-add-button{
+    margin-left: 5px;
+    font-family: 'Yatra One', cursive;
+    font-size: 20px;
+    margin-top: 20px;
+
+}
+.modal-content{
+    margin-top: 3%;
+    font-size: 200%;
+    font-family: 'Yatra One', cursive;
+
+}
+.input-box{
+    width: 72%;
+    height: 20%;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 10px;
+    font-family: 'Yatra One', cursive;
+    background-color: rgb(233, 229, 229);
+
+}
+#outer-container{
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 10%;
+    width: 90%;
+}
+.card{
+    list-style: none;
+    display: none;
+    position: relative;
+    min-height: 350px;
+    min-width: 19%;
+    text-align: center;
+    border-radius: 10px;
+    margin: 3% 0 0 5%;
+    padding: 10px 0 0 0;
+    background: #EEEEEE;
+    animation: cardAnimate 0.2s ease-in 0s 1;
+}
+.card-head{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 30px;
+    font-weight: 500;
+    color: #c91b55;
+    cursor: pointer;
+    font-family: 'Yatra One', cursive;
+
+}
+
+.card:hover{
+    box-shadow: 2px 2px 20px black;
+}
+
+.list-element{
+    margin-top: 10%;
+    margin-bottom: 10%;
+    font-family: 'Yatra One', cursive;
+
+}
+.buttons-in-card{
+    display: flex;
+    font-size: 30px;
+}
+.add-button-in-card{
+    position: absolute;
+    bottom: 15px;
+    font-size: 25px;
+    margin-left: 15%;
+    right: 10px;
+    cursor: pointer;
+    color: rgb(55, 55, 169);
+    background-color: white;
+}
+
+.delete-button-in-card{
+    position: absolute;
+    right: 50px;
+    bottom: 15px;
+    font-size: 25px;
+    cursor: pointer;
+    color: rgb(211, 49, 49);
+    background-color: white;
+}
+.in-list-button{
+    cursor: pointer;
+}
+#modal-div-card{
+    display: none;
+    position: fixed;
+    padding: 20% 0 0 35%;
+    text-align: center;
+    top: -10%;
+    left: -1%;
+    z-index: 1;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100vw;
+    height: 100vh;
+}
+#modal-box-card{
+    border-radius: 7px;
+    width: 30vw;
+    height: 30vh;
+    border: 1px solid rgb(165, 46, 46);
+    padding: 10px 0 0 0px;
+    text-align: center;
+    color: black;
+    background-color: #fff;
+    animation: modalPop 0.2s ease-in 0s 1;
+}
 
 
+.this-list-element{
+    font-size: 20px;
+    font-weight: 700;
+    color: grey;
+    animation: cardTextAnimate 0.2s ease-in 0s 1;
+}
+#check-done{
+    color: black;
+    background-color: grey;
+    display: none;
+    font-family: 'Yatra One', cursive;
 
+}
+.mark-as-done-class{
+    background-color: rgb(77, 77, 228);
+    color: white;
+    font-size: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 3px 4px 4px 4px;
+    font-family: 'Yatra One', cursive;
 
+}
+#back-button{
+   font-size: 40px;
+   display: none;
+   font-family: 'Yatra One', cursive;
+
+}
+#back-icon{
+    z-index: 20;
+    font-size: 40px;   
+    color: red;
+    cursor: pointer;
+}
+#card-dynamic-head{
+    justify-content: center;
+    font-size: 55px;
+    font-weight: bold;
+    color: white;
+    margin-top: -40px;
+    font-family: 'Yatra One', cursive;
+    display: none;
+}
+
+#empty-list{
+    position: relative;
+    top: 10vh;
+    margin-left: 10vw;
+    color: black;
+    text-decoration: underline;
+    font-size: 45px;
+    font-weight: 800;
+    font-family: 'Yatra One', cursive;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+    body{
+        overflow-x: hidden;
+    }
+    
+    #header-part1{
+        font-size: 5vh;
+    }
+
+    #header-part2{
+        left: 73%;
+    }
+
+    .header-part3{
+        font-size: 3vh;
+        left: 80%;
+    }
+}
