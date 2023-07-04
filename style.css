@@ -1,279 +1,251 @@
-@import url('https://fonts.googleapis.com/css2?family=Yatra+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap');
+
+
 
 body{
-    background-color: rgb(250, 88, 129);
-    color: white;
-}
-#header-part1{
-    font-size: 8vh;
-    font-family: 'Yatra One', cursive;
-    font-weight: bold;
+    background-color: black;
 }
 
-#header{
+.container-1 {
     display: flex;
-    font-size: 50px;
-}
-#header-part2{
-    z-index: 1;
-    position: absolute;
-    left: 82%;
-    cursor: pointer;
-    top: 5px;
-    color: rgb(78 160 231);
-}
-.header-part3{
-    z-index: 1;
-    position: absolute;
-    left: 87%;
-    margin-top: 5px;
-    cursor: pointer;
-    font-size: 6vh;
-    font-family: 'Yatra One', cursive;
-}
-.color-red{
-    color: red;
-}
-#popup-to-add-card{
-    display: none;
-    position: fixed;
-    padding: 20% 0 0 35%;
-    top: -10%;
-    left: -1%;
-    z-index: 1;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.8);
-    width: 100vw;
-    height: 100vh;
-    font-family: 'Yatra One', cursive;
-}
-#popup-to-add-card-box{
-    border-radius: 7px;
-    width: 30vw;
-    height: 30vh;
-    padding: 30px 0 0px 0px;
-    text-align: center;
-    color: black;
-    background-color: #fff;
-    font-family: 'Yatra One', cursive;
-    
-}
-.big-blue-text{
-    color: rgb(181, 54, 54);
-    font-size: 25px;
-}
-.blue-button{
-    border-radius: 250px;
-    margin-top: 5%;
-    color: white;
-    background-color: rgb(243, 56, 56);
-    font-size: 30px;
-    width: 25%;
-    height: 20%;
-    cursor: pointer;
-    
-}
-button{
-    border: none;
-}
-#modal-close-button{
-    margin-left: 10px;
-    font-family: 'Yatra One', cursive;
-    font-size: 20px;
-    margin-top: 20px;
-
-}
-#modal-add-button{
-    margin-left: 5px;
-    font-family: 'Yatra One', cursive;
-    font-size: 20px;
-    margin-top: 20px;
-
-}
-.modal-content{
-    margin-top: 3%;
-    font-size: 200%;
-    font-family: 'Yatra One', cursive;
-
-}
-.input-box{
-    width: 72%;
-    height: 20%;
-    text-align: center;
-    font-size: 18px;
-    border-radius: 10px;
-    font-family: 'Yatra One', cursive;
-    background-color: rgb(233, 229, 229);
-
-}
-#outer-container{
-    display: flex;
-    position: relative;
+    grid-template-columns: auto auto;
     flex-wrap: wrap;
-    align-items: flex-start;
-    flex-direction: row;
     justify-content: space-between;
-    margin-right: 10%;
-    width: 90%;
+    width: 65vw;
+    margin: auto;
+    margin-top: 10px;
 }
-.card{
-    list-style: none;
-    display: none;
-    position: relative;
-    min-height: 350px;
-    min-width: 19%;
-    text-align: center;
+
+.text1 {
+    display: inline-block;
+    font-size: 60px;
+    font-weight: lighter;
+    font-family: 'Oleo Script Swash Caps', cursive;
+    color: goldenrod
+}
+  
+.text2 {
+    display: inline-block;
+    text-align: right;
+    font-size: 40px;
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-weight: lighter;
+    padding: 1.3rem;
+}
+  
+i{
+    font-size: 2rem;
+    color: rgb(55, 55, 180);
+    cursor: pointer;
+}
+
+.add-text, .back-text{
+    color: white;
+}
+  
+
+.blur {
+    filter: blur(4px);
+}
+
+.popup-box {
     border-radius: 10px;
-    margin: 3% 0 0 5%;
-    padding: 10px 0 0 0;
-    background: #EEEEEE;
-    animation: cardAnimate 0.2s ease-in 0s 1;
-}
-.card-head{
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 30px;
-    font-weight: 500;
-    color: #c91b55;
-    cursor: pointer;
-    font-family: 'Yatra One', cursive;
-
-}
-
-.card:hover{
-    box-shadow: 2px 2px 20px black;
-}
-
-.list-element{
-    margin-top: 10%;
-    margin-bottom: 10%;
-    font-family: 'Yatra One', cursive;
-
-}
-.buttons-in-card{
-    display: flex;
-    font-size: 30px;
-}
-.add-button-in-card{
-    position: absolute;
-    bottom: 15px;
-    font-size: 25px;
-    margin-left: 15%;
-    right: 10px;
-    cursor: pointer;
-    color: rgb(55, 55, 169);
-    background-color: white;
-}
-
-.delete-button-in-card{
-    position: absolute;
-    right: 50px;
-    bottom: 15px;
-    font-size: 25px;
-    cursor: pointer;
-    color: rgb(211, 49, 49);
-    background-color: white;
-}
-.in-list-button{
-    cursor: pointer;
-}
-#modal-div-card{
-    display: none;
-    position: fixed;
-    padding: 20% 0 0 35%;
-    text-align: center;
-    top: -10%;
-    left: -1%;
-    z-index: 1;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.8);
-    width: 100vw;
-    height: 100vh;
-}
-#modal-box-card{
-    border-radius: 7px;
-    width: 30vw;
-    height: 30vh;
-    border: 1px solid rgb(165, 46, 46);
-    padding: 10px 0 0 0px;
-    text-align: center;
     color: black;
-    background-color: #fff;
-    animation: modalPop 0.2s ease-in 0s 1;
-}
-
-
-.this-list-element{
-    font-size: 20px;
-    font-weight: 700;
-    color: grey;
-    animation: cardTextAnimate 0.2s ease-in 0s 1;
-}
-#check-done{
-    color: black;
-    background-color: grey;
-    display: none;
-    font-family: 'Yatra One', cursive;
-
-}
-.mark-as-done-class{
-    background-color: rgb(77, 77, 228);
-    color: white;
-    font-size: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 3px 4px 4px 4px;
-    font-family: 'Yatra One', cursive;
-
-}
-#back-button{
-   font-size: 40px;
-   display: none;
-   font-family: 'Yatra One', cursive;
-
-}
-#back-icon{
-    z-index: 20;
-    font-size: 40px;   
-    color: red;
-    cursor: pointer;
-}
-#card-dynamic-head{
-    justify-content: center;
-    font-size: 55px;
     font-weight: bold;
+    width: 75vw;
+    max-width: 350px;
+    z-index: 1;
+    text-align: center;
+    font-family: 'Oleo Script Swash Caps', cursive;
+    padding: 1rem;
+    font-size: 35px;
+    box-shadow: 2px 2px 20px black;
+    background-color: white;
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    animation:popupbox 0.4s ease-in-out;
+}
+
+input{
+    border-radius: 10px;
+    border-color: white;
+    width: 70%;
+    max-width: 300px;
+    height: 35px;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+    background-color: rgb(189, 184, 184);
+}
+  
+.popup-box-button {
+    width: 80px;
+    height: 35px;
+    font-size: 20px;
+    background-color:  black;
     color: white;
-    margin-top: -40px;
-    font-family: 'Yatra One', cursive;
-    display: none;
+    letter-spacing: 2px;
+    border: 0px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 1.5vw;
+    box-sizing: border-box;
+    padding: 0.35rem;
+}
+  
+.popup-box-button:hover{
+      box-shadow: 2px 2px 20px black;
 }
 
-#empty-list{
-    position: relative;
-    top: 10vh;
-    margin-left: 10vw;
-    color: black;
-    text-decoration: underline;
-    font-size: 45px;
-    font-weight: 800;
-    font-family: 'Yatra One', cursive;
+
+.box {
+  position: relative;
+  min-height: 300px;
+  width: 200px;
+  margin: 25px;
+  border-radius: 10px;
+  font-size: 25px;
+  text-align: center;
+  padding: 20px 10px 3.5rem;
+  font-family: 'Oleo Script Swash Caps', cursive;
+  color: black;
+  background-color: white;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px){
-    body{
-        overflow-x: hidden;
-    }
-    
-    #header-part1{
-        font-size: 5vh;
-    }
-
-    #header-part2{
-        left: 73%;
-    }
-
-    .header-part3{
-        font-size: 3vh;
-        left: 80%;
-    }
+.box:hover{
+    box-shadow: 2px 2px 15px white;
 }
+
+#box-heading{
+    cursor: pointer;
+    font-size: 2rem;
+    font-family: 'Oleo Script Swash Caps', cursive;
+    text-decoration: none;
+}
+
+
+.button-container {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.button-container i {
+  padding: 0.5rem;
+}
+
+.done-button {
+  background-color: blue;
+  border: 1px solid black;
+  color: white;
+  border-radius: 0.5rem;
+  font-family: 'IM Fell English SC', serif;
+
+}
+
+.done-button:hover {
+  background-color: red;
+  box-shadow: 1px 1px 5px gray;
+}
+
+hr {
+  margin-left: 35px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(219, 163, 22);
+  padding: 0.5rem;
+}
+
+.completedtext {
+  color:  rgb(219, 163, 22);
+  text-decoration: line-through;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'IM Fell English SC', serif;
+
+}
+.pending_checkbox {
+  color: black;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: 'IM Fell English SC', serif;
+}
+
+.container-2 {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 75vw;
+  margin: auto;
+  color: white;
+  font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+
+.task {
+  margin: 0.5rem;
+}
+
+.task-text {
+  padding: 0.5rem;
+  font-weight: bold;    
+  font-size: 1.2rem;
+  font-family: 'Oleo Script Swash Caps', cursive;
+  color: black;
+}
+
+.box-1 {
+  padding: 25px 70px;
+  margin: auto;
+}
+.hide {
+  display: none;
+}
+
+.add-button {
+  float: right;
+  position: relative;
+  top: 125px;
+  left: 50px;
+}
+
+.hr-1, .hr-2 {
+  width: 150px;
+  position: relative;
+}
+
+.hr-1 {
+  right: 200px;
+  top: 80px;
+}
+
+.hr-2 {
+  left: 300px;
+  bottom: 70px;
+}
+
+.container-3 {
+  font-size: 30px;
+  font-family: 'Oleo Script Swash Caps', cursive;
+  display: flex;
+  visibility: hidden;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 20rem;
+  right: 20rem;
+  top: -8rem;
+}
+
+@keyframes popupbox {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1)
+    }
+  }

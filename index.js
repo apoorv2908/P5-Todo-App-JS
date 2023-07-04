@@ -1,187 +1,170 @@
-var arr_of_obj = new Set();
-var value_id;
-var title_flag = false;
-var subtask = new Map;
 
-//-------------------------------------------------------
-//function to ceate the popup which adds card 
-function modal(){
-    document.getElementById("popup-to-add-card").style.display = "block";
-    document.getElementById("header").style.filter="blur(5px)";
-};
-//-------------------------------------------------------
+//accessing add list button main-
 
-//-------------------------------------------------------
-//Function which creates card after assigning details in popup
-function addCard(){
-    var card_title = document.getElementById("modal-input-box").value;
-    createObj(card_title);
-    closeModal();
-}
-//-------------------------------------------------------
+const addList = document.getElementById("addList");//addlist btn
+const popup = document.querySelector(".popup-wrap");//blank div to append popup
 
 
-//-------------------------------------------------------
-//Function which closes the popup which creates card
-function closeModal(){
-    document.getElementById("popup-to-add-card").style.display = "none";
-    document.getElementById("header").style.filter="blur(0px)"
-}
-//-------------------------------------------------------
+//when clicking on the add list icon 
 
+//process 1st
+addList.addEventListener("click", () => {
 
-//-------------------------------------------------------
-//Function to assign the details of each card into a set
-function createObj(title){
-    document.getElementById('empty-list').style.display = 'none'
-    var card_obj = {
-        title: title,
-        id: Date.now(),
-        subtask
-    };
-    arr_of_obj.add(card_obj);
-    createCard(card_obj.id);
-};
-//-------------------------------------------------------
+  //creating a pop-up to add list
+  const popupbox = document.createElement("div");//div to append card
+  const popHeading = document.createElement("p");//card heading
+  const popInput = document.createElement("input");//popup input
+  const addBtn = document.createElement("div");//for-add btn
+  const closeBtn = document.createElement("div");//for-cls btn
+  document.querySelector(".container").classList.add("blur"); //to make background blur
+  popup.appendChild(popupbox);//appended into blank div
+  popupbox.className = "popup-box";
+  popHeading.innerText = "ADD NEW LIST";
+  popInput.type = "text";
+  popInput.placeholder = "Add New List Name Here";
+  popInput.style.textAlign= 'center';
+  addBtn.className = "popup-box-button";
+  closeBtn.className = "popup-box-button";
+  addBtn.innerText = "Add";
+  closeBtn.innerText = "Close";
 
+  //to make sure if user has added some input, if not then return a warning 
+  const warning = document.createElement("p");
+  warning.innerText="Enter List Name To Add!!";
+  warning.style.display = "none";
 
-//-------------------------------------------------------
-//Function to create subtask in a card 
-function addList(){
-    var cloned_list_item = document.querySelector(".this-list-element").cloneNode(true);
-    var subtask_name = document.getElementById('modal-input-box-card').value;
-    console.log(value_id);
-    cloned_list_item.innerText =  subtask_name; 
-    cloned_list_item.style.display = "block";
-    cloned_list_item.setAttribute('id',`${Date.now()}`);
-    cloned_list_item.setAttribute('value',`${Date.now()}`);
-    cloned_list_item.setAttribute('style',"margin-left: 10px; font-family: 'Yatra One', cursive;");
-    
-    var done_button = document.createElement('button');
-    done_button.setAttribute('id',`check-done-${Date.now()}`);
-    done_button.setAttribute('class','mark-as-done-class');
-    done_button.setAttribute('value',`${Date.now()}`);
-    done_button.setAttribute('onclick','completedTask(this.value)');
-    done_button.innerText = ' Mark Done';
-    done_button.setAttribute('style','font-size:15 px;cursor:pointer; height:18px; border-radius:10px;')
-    cloned_list_item.appendChild(done_button);
-    cloned_list_item.setAttribute('onClick',"completedTask(this.value)");
-     for(obj of arr_of_obj){
-        for(prop in obj){
-            if(obj.id == value_id){
-                obj.subtask.set(`${subtask_name}`,`${Date.now()}`);
-                break;
-            }
+  //appending all children into one 
+  popupbox.appendChild(popHeading);
+  popupbox.appendChild(popInput);
+  popupbox.appendChild(addBtn);
+  popupbox.appendChild(closeBtn);
+  popupbox.appendChild(warning);
+
+  //Click function to return a warning message if user has given no input 
+  addBtn.addEventListener("click", () => {
+    if (popInput.value=== "") {
+        warning.style.fontSize="0.7rem"
+        warning.style.display="block";
+    }
+    else{
+      document.getElementById("intro-text").style.display="none";//no items in the list
+
+      //Creating a card here 
+      const box = document.createElement("div"); 
+      const boxHeading = document.createElement("span"); //heading of the card 
+      const add = document.createElement("i"); //add subtask button logo in the card
+      const deleteBtn = document.createElement("i"); //delete card button logo
+      const btnContainer = document.createElement("div"); //to add 2 btns
+      btnContainer.className = "button-container"; 
+      add.className = "fa-solid fa-circle-plus"; //assigning logos from external class
+      deleteBtn.className = "fa-solid fa-trash-can"; //assigning logos from external class
+      boxHeading.id = "box-heading"; 
+      box.className = "box";
+
+      const container2 = document.querySelector(".container-2");
+
+      //appending all children to one div-
+      container2.appendChild(box);
+      box.appendChild(boxHeading);
+      box.appendChild(btnContainer);
+      btnContainer.appendChild(add);
+      btnContainer.appendChild(deleteBtn);
+
+      boxHeading.innerText = popInput.value;
+
+      //Click function to create a new page here for an indivizual card-
+      boxHeading.addEventListener('click',()=>{
+        const heading = document.getElementById("heading");
+        heading.innerText=boxHeading.innerText;
+        const container=document.querySelector(".container");
+        const container3=document.querySelector(".container-3");
+
+        //to show only container 3 and hide all others containers-
+        container.style.visibility="hidden";
+        container3.style.visibility="visible";
+        const backBtn=document.getElementById("backbtn");
+
+        //appending whole card of conatainer into container 3
+        container3.appendChild(box);
+        deleteBtn.addEventListener('click',()=>{
+          document.querySelector(".container-3").removeChild(box);
+          document.querySelector(".container").style.visibility="visible";
+          document.querySelector(".container-3").style.visibility="hidden";
+        })
+        backBtn.addEventListener('click',()=>{
+          container3.removeChild(box);
+          container2.appendChild(box);
+          document.querySelector(".container").style.visibility="visible";
+          document.querySelector(".container-3").style.visibility="hidden";
+        })
+      })
+      //after clicking add list(input) btn -
+      boxHeading.style.borderBottom = "1px solid black";
+      popup.removeChild(popupbox);//add list pop up will dissapears
+      document.querySelector(".container").classList.remove("blur");//blur will dissapear
+      deleteBtn.addEventListener("click", () => {//deleting the whole card
+        document.querySelector(".container-2").removeChild(box);
+        if(document.querySelector(".container-2").innerText===""){
+          document.querySelector("#intro-text").style.display="block";
         }
+      });
+
+      //again creating template for add new add items-
+      add.addEventListener("click", () => {
+        const popupbox = document.createElement("div");
+        const popHeading = document.createElement("p");
+        const popInput = document.createElement("input");
+        const addBtn = document.createElement("div");
+        const closeBtn = document.createElement("div");
+        popup.appendChild(popupbox);
+        popupbox.className = "popup-box";
+        popHeading.innerText = "Add new Items";
+        popInput.type = "text";
+        popInput.style.textAlign = "center";
+        popInput.placeholder = "Add New Items Here";
+        addBtn.className = "popup-box-button";
+        closeBtn.className = "popup-box-button";
+        addBtn.innerText = "Add";
+        closeBtn.innerText = "Close";
+        document.querySelector(".container").classList.add("blur");
+        popupbox.appendChild(popHeading);
+        popupbox.appendChild(popInput);
+        popupbox.appendChild(addBtn);
+        popupbox.appendChild(closeBtn);
+        addBtn.addEventListener("click", () => {
+        //if user write items name as input-
+          if (popInput.value !== "") {
+            // creating space/div to appends that list items on card
+            const task = document.createElement("div");
+            const taskText = document.createElement("span");
+            const doneButton = document.createElement("button");
+            taskText.className = "task-text";
+            doneButton.className = "done-button";
+            task.className = "task";
+            taskText.innerText = popInput.value;
+            doneButton.innerText = "mark done";
+            document.querySelector(".container").classList.remove("blur");
+            box.appendChild(task);
+            task.appendChild(taskText);
+            task.appendChild(doneButton);
+            popup.removeChild(popupbox);
+            doneButton.addEventListener("click", () => {
+              taskText.style.textDecoration = "line-through";
+              task.removeChild(doneButton);
+            });
+          }
+        });
+        //close btn for the first add list popup-
+        closeBtn.addEventListener("click", () => {
+          popup.removeChild(popupbox);
+          document.querySelector(".container").classList.remove("blur");
+        });
+      });
     }
-    document.getElementById(`${value_id}`).getElementsByClassName('add-list-after-this')[0].appendChild(cloned_list_item).appendChild(done_button);
-    closeCardModal();
-}
-
-
-//-------------------------------------------------------
-//Function to close the popup of adding the subtask
-function closeCardModal(){
-    document.getElementById('modal-div-card').style.display = "none";
-}
-//-------------------------------------------------------
-
-
-//-------------------------------------------------------
-//adding sublist items to card
-function addSubtask(val) {
-    document.getElementById("modal-div-card").style.display = "block";
-    value_id = val;
-};
-//-------------------------------------------------------
-
-
-//-------------------------------------------------------
-//Function to delete a card
-function deleteCard(val){
-    var delete_div = document.getElementById(`${val}`);
-    for(obj of arr_of_obj){
-        for(prop in obj){
-        if (obj.id==val)
-        arr_of_obj.delete(obj);
-        break;
-        }
-    }
-    delete_div.parentNode.removeChild(delete_div);
-    if(arr_of_obj.size==0){
-        document.getElementById('empty-list').style.display = 'block';
-    }
-    
-};
-//cloning of card
-function createCard(){
-    var first_card = document.querySelector('.card').cloneNode(true);
-    display(first_card);
-};
-
-//task list item done
-function completedTask(value){
-    document.getElementById(`${value}`).style.textDecoration = 'line-through';
-    document.getElementById(`${value}`).style.color = '#112D4E';
-    document.getElementById(`check-done-${value}`).remove();
-}
-//appending cards to outer container
-function display(card){
-    document.getElementById('empty-list').style.display = 'none'
-    arr_of_obj.forEach(element => {
-        card.id = element.id;
-        card.querySelector(".card-head").innerHTML = element.title;
-        card.querySelector(".card-head").setAttribute('value',`${element.id}`);
-        card.setAttribute("value",`${element.id}`);
-        card.setAttribute("display","block");
-        card.setAttribute("min-height","300px");
-        card.querySelector(".delete-button-in-card").setAttribute("value",`${element.id}`);
-        card.querySelector(".delete-button-in-card").setAttribute("onClick","deleteCard(this.value)");
-        card.querySelector(".add-button-in-card").setAttribute("value",`${element.id}`);
-        card.querySelector(".add-button-in-card").setAttribute("onClick","addSubtask(this.value)");    
-    });
-    if(title_flag)
-    card.style.display = 'none';
-    else
-    card.style.display = "block";
-    document.getElementById("outer-container").appendChild(card);
-}
-//selected card
-function headerFunc(val){
-    var card_header;
-    for(let ele of arr_of_obj){
-        for(let id in ele){
-            if(ele[id]==val){
-                card_header = ele.title;
-                break;
-            };
-        };
-    };
-    document.querySelector("#header-part1").style.display = 'none';
-    for(let ele of arr_of_obj){
-            if(ele.id==val){
-                document.getElementById(`${ele.id}`).style.display = 'block';
-            }
-            else {
-                document.getElementById(`${ele.id}`).style.display = 'none';
-            }
-    };
-    document.getElementById('card-dynamic-head').innerText = `${card_header}`;
-    document.getElementById('card-dynamic-head').style.display = 'flex'
-    document.getElementById('outer-container').style.justifyContent = 'center'
-    document.getElementById('back-button').style.display = 'block'
-    title_flag = true;
-};
-
-
-//after clicking back button main page
-function displayAll(){
-    title_flag = false;
-    document.querySelector("#header-part1").style.display = 'block';
-    document.getElementById('back-button').style.display = 'none';
-    for(let ele of arr_of_obj){
-            document.getElementById(`${ele.id}`).style.display = 'block';
-    };
-    document.getElementById('card-dynamic-head').innerText = ``;
-    document.getElementById('card-dynamic-head').style.display = 'none';
-}
+  });
+  //close btn for the second add item popup-
+  closeBtn.addEventListener("click", () => {
+    popup.removeChild(popupbox);
+    document.querySelector(".container").classList.remove("blur");
+  });
+});
